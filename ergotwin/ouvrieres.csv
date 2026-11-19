@@ -1,0 +1,4 @@
+ouvriere,poste_principal,competences,antecedent_tms,zones_atteintes
+Coupeur du cahier des charges (5 MP épaules et poignets) – poste actuel,Couper – actuel (simulé),Couper – actuel (simulé);Ouvrir rouleau – actuel (simulé);Classer – actuel (simulé);Transporter – actuel (simulé),oui,epaules;poignets
+Coupeur du cahier des charges (5 MP épaules et poignets) – poste amélioré,Couper – accès 2 côtés (simulé),Couper – accès 2 côtés (simulé);Ouvrir rouleau – porte-rouleau (simulé);Classer – pupitre incliné (simulé);Transporter – chariot haut (simulé),oui,epaules;poignets
+Coupeur sans antécédent – poste actuel,Couper – actuel (simulé),Couper – actuel (simulé);Ouvrir rouleau – actuel (simulé);Classer – actuel (simulé);Transporter – actuel (simulé),non,

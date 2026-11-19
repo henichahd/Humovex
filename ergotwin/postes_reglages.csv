@@ -1,0 +1,13 @@
+poste,position,objet,taille,hauteur_chaise,hauteur_table,distance_table,profondeur_travail,hauteur_travail,inclinaison_plan
+Couper – actuel (simulé),debout,piece,170,45,95,5,75,10,0
+Couper – accès 2 côtés (simulé),debout,piece,170,45,95,5,30,10,0
+Couper – table moins profonde (simulé),debout,piece,170,45,95,5,45,10,0
+Couper – table plus haute (simulé),debout,piece,170,45,105,5,75,10,0
+Couper – 2 côtés + table plus haute (simulé),debout,piece,170,45,105,5,30,10,0
+Ouvrir rouleau – actuel (simulé),debout,piece,170,45,50,5,25,15,0
+Ouvrir rouleau – porte-rouleau (simulé),debout,piece,170,45,95,5,30,1,0
+Classer – actuel (simulé),debout,piece,170,45,95,5,25,1,0
+Classer – pupitre incliné (simulé),debout,piece,170,45,115,5,20,1,30
+Transporter – actuel (simulé),debout,piece,170,45,50,5,30,5,0
+Transporter – chariot haut (simulé),debout,piece,170,45,85,5,30,5,0
+Couper – préparation (mesuré),debout,piece,170,45,95,5,45,1,0

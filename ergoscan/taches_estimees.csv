@@ -1,0 +1,8 @@
+tache,posture,pct_temps,cou,dos,epaules,coudes,poignets,genoux,charge_kg,repetitif,source
+Ouvrir rouleau,Apporter le rouleau au chariot,25,10,10,25,90,10,10,0,non,Fiche du poste TLS (rouleaux apportés au chariot)
+Ouvrir rouleau,Soulever et poser le rouleau sur la table,25,15,40,60,70,15,35,12,non,Hypothèse : poids du rouleau à confirmer avec TLS
+Ouvrir rouleau,Dérouler et étaler le tissu jusqu'au fond de la table,50,20,40,87,26,15,5,0,non,Jumeau 3D calibré sur la vidéo (main à 60 cm du bord : dos 40° épaules 87°) ; cou 20° observé sur coupe.mp4
+Classer,Trier les panneaux par nuance près du bord de la table,80,44,3,17,80,20,0,0,oui,Jumeau 3D calibré (point de travail à 15 cm : cou 44° dos 3° épaules 17°) + exigence visuelle forte (fiche TLS)
+Classer,Former le paquet de 30 panneaux,20,30,15,30,70,20,0,2.5,oui,Fiche TLS (paquets de 2 à 3 kg)
+Transporter,Porter le paquet jusqu'au chariot,60,5,3,15,90,5,10,2.5,non,Fiche TLS (paquets de 2 à 3 kg) ; marche debout tête droite
+Transporter,Déposer le paquet dans le chariot,40,15,45,40,60,10,30,2.5,non,Hypothèse : chariot bas (à vérifier sur place)
