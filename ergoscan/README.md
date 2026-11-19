@@ -1,5 +1,7 @@
 # ErgoScan – mesure des postures et score REBA (SSTHack 2026, poste 2.2 Coupe, TLS)
 
+Partie du projet **Humovex** (SSTHack 2026, poste 2.2 Coupe, TLS).
+
 ErgoScan analyse une vidéo de profil (ou une webcam), suit 33 points du corps avec MediaPipe, calcule les angles
 par zone (cou, dos, épaules, coudes, poignets, genoux) et le score REBA image par image. Il produit la fiche du
 poste, tâche par tâche, et les lignes à copier dans le jumeau numérique (`../ergotwin/postes.csv`).

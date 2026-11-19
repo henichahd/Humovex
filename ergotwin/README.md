@@ -1,4 +1,6 @@
-# ErgoTwin Coupe – jumeau numérique du poste de coupe (SSTHack 2026, poste 2.2, TLS)
+# ErgoTwin – jumeau numérique du poste de coupe
+
+Partie du projet **Humovex** (SSTHack 2026, poste 2.2 Coupe, TLS).
 
 Acteur principal : le coupeur. Le jumeau aide le coupeur à protéger son corps et aide l'entreprise à choisir
 le bon aménagement, sans jamais surveiller le rendement.
@@ -14,7 +16,7 @@ python -m streamlit run app.py
 
 | Vue | Onglet | Rôle |
 |---|---|---|
-| Coupeur et médecin | Mon corps (coupeur) | Batteries par zone sur la journée, 3 organisations (blocs, petits lots, dynamique), propositions du boîtier, bouton Signaler, check-in du soir |
+| Coupeur et médecin | Mon corps (coupeur) | Batteries par zone sur la journée, 3 organisations (blocs, petits lots, dynamique), propositions de l'application, bouton Signaler, check-in du soir |
 | Les deux | Jumeau du poste | Avatar 3D : tester un réglage (taille, hauteur, profondeur…) et jouer les 4 tâches avant / après |
 | Entreprise | Responsable HSE | Carte des postes à risque, situation agrégée par poste, signalements sans nom |
 | Entreprise | Ingénieur conception | Toutes les solutions d'une tâche classées ; recommandée = baisse le risque sans charger une autre zone |
@@ -39,12 +41,12 @@ Créés à l'usage, jamais versionnés : `signalements.csv` (sans nom), `donnees
 
 | Id | Comment |
 |---|---|
-| H1 | Le boîtier propose, le coupeur décide ; aucune tâche automatisée |
-| H2 | Interface simple ; « Boîtier allumé » : le coupeur peut l'arrêter |
+| H1 | L'application propose, le coupeur décide ; aucune tâche automatisée |
+| H2 | Interface simple ; « Alertes activées » : le coupeur peut arrêter l'outil |
 | H3 | Choix de la tâche et des micro-pauses ; bouton Signaler |
 | D1 | Vue coupeur et médecin séparée ; check-in stocké localement |
-| D2 | Vue entreprise agrégée par poste, masquée sous 3 personnes ; signalements sans nom |
+| D2 | Vue entreprise agrégée par poste, masquée sous 5 personnes ; signalements sans nom |
 | D3 | ErgoScan : aucune vidéo enregistrée ; le bracelet ne filme pas |
 | M1 | 6 zones suivies, transfert de charge détecté et signalé |
 | M2 | Aménagement du poste, organisation, variété des tâches |
-| M3 | REBA avant / après (avatar calibré sur la vidéo réelle, bracelet IMU pour le poignet) |
+| M3 | REBA avant / après (avatar calibré sur la vidéo réelle, bracelet à deux IMU pour le poignet) |

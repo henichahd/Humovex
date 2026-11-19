@@ -303,7 +303,7 @@ ROLES = {"couper": "Couper", "rouleau": "Ouvrir rouleau", "classer": "Classer", 
 ORGANISATIONS = {
     "blocs": "Grands blocs (couper toute la matinée, puis classer et transporter)",
     "petits_lots": "Petits lots fixes (cycle de 30 min de la fiche : 5 rouleau · 15 couper · 7 classer · 3 chariot)",
-    "dynamique": "Dynamique (alerte → le boîtier propose une autre tâche ou une micro-pause, le coupeur choisit)",
+    "dynamique": "Dynamique (alerte → l'application propose une autre tâche ou une micro-pause, le coupeur choisit)",
 }
 
 

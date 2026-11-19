@@ -16,7 +16,7 @@ from jumeau import (
     generer_rotations, suggerer_formation, texte_suggestions, planning_en_tableau, heure_txt, DOSSIER, _tache,
 )
 
-st.set_page_config(page_title="ErgoTwin – Jumeau numérique", page_icon=":material/accessibility_new:", layout="wide")
+st.set_page_config(page_title="ErgoTwin – Jumeau numérique · Humovex", page_icon=":material/accessibility_new:", layout="wide")
 
 COULEURS = {"cou": "#ef5b5b", "epaules": "#f5a142", "coudes": "#a78bfa",
             "poignets": "#4aa3ff", "dos": "#3ecf8e", "genoux": "#94a3b8"}
@@ -43,14 +43,14 @@ p = Parametres(
 )
 st.sidebar.divider()
 st.sidebar.subheader("Organisation dynamique")
-st.sidebar.caption("Le boîtier propose, le coupeur choisit.")
+st.sidebar.caption("Le bracelet alerte, l'application propose, le coupeur choisit.")
 p.marge_alerte = st.sidebar.slider("Alerte : points au-dessus du seuil", 0.0, 30.0, 15.0, 1.0,
                                    help="L'alerte arrive AVANT le seuil, pour laisser le temps d'agir")
 p.micro_pause_en_priorite = st.sidebar.toggle("Proposer d'abord une micro-pause", False,
                                               help="Sinon : d'abord une tâche qui repose la zone, micro-pause s'il n'y en a pas")
 p.micro_pause_min = st.sidebar.slider("Durée d'une micro-pause (min)", 1, 10, 2, 1)
-p.boitier_actif = st.sidebar.toggle("Boîtier allumé", True,
-                                    help="H2 : le coupeur peut arrêter le boîtier ; il ne reçoit alors plus de propositions")
+p.boitier_actif = st.sidebar.toggle("Alertes activées", True,
+                                    help="H2 : le coupeur peut arrêter l'outil ; il ne reçoit alors plus de propositions")
 st.sidebar.divider()
 st.sidebar.subheader("Bracelet ErgoBand (IMU au poignet)")
 st.sidebar.caption("Le bracelet mesure l'angle du poignet (la caméra le voit mal) et calcule sa part du score REBA.")
@@ -60,7 +60,7 @@ pct_plie = st.sidebar.slider("Temps avec le poignet plié à plus de 15° (%)", 
 gpm = st.sidebar.slider("Gestes par minute", 0, 60, 32)
 
 st.title("ErgoTwin – Jumeau numérique du poste de coupe")
-st.caption("On mesure (ErgoScan, bracelet ErgoBand) → on simule la journée → le boîtier propose, le coupeur décide. "
+st.caption("On mesure (ErgoScan, bracelet ErgoBand) → on simule la journée → l'application propose, le coupeur décide. "
            "Niveau « ombre numérique » (Kritzinger 2018) : les mesures arrivent dans le jumeau, le retour vers le "
            "poste passe par le coupeur (humain dans la boucle).")
 
@@ -384,7 +384,7 @@ if onglet_ouv is not None:
           "Production": f"{r['panneaux']:.0f} panneaux ({r['paquets']:.1f} paquets)",
           "Rangement non fait": f"{r['travail_restant']:.0f} min",
           "Autres activités": f"{r['minutes_autres']:.0f} min",
-          "Propositions du boîtier": str(r["nb_alertes"]) if k == "dynamique" else "—",
+          "Propositions reçues": str(r["nb_alertes"]) if k == "dynamique" else "—",
           "Micro-pauses": f"{r['nb_micro_pauses']} ({r['nb_micro_pauses'] * p.micro_pause_min} min)" if k == "dynamique" else "—",
       } for k, (_, r) in resultats.items()]), hide_index=True, width="stretch")
       st.caption("L'organisation change le MOMENT où une zone s'épuise ; seul l'aménagement du poste réduit la charge "
@@ -415,7 +415,7 @@ if onglet_ouv is not None:
       st.plotly_chart(fig_t, width="stretch")
 
       if org == "dynamique":
-          st.subheader("Ce que le boîtier a proposé au coupeur")
+          st.subheader("Ce que l'application a proposé au coupeur")
           st.caption("Simulation : on suppose que le coupeur accepte chaque proposition. En vrai, il peut choisir une autre "
                      "tâche, une pause, ou continuer (exigences H1 et H3).")
           if r_o["propositions"]:
@@ -488,7 +488,7 @@ if onglet_hse is not None:
       st.plotly_chart(fig, width="stretch")
 
       st.subheader("Situation par poste (données agrégées)")
-      st.caption("D2 : aucune donnée individuelle. Un poste suivi par moins de 3 personnes est masqué, "
+      st.caption("D2 : aucune donnée individuelle. Un poste suivi par moins de 5 personnes est masqué, "
                  "pour qu'on ne puisse pas reconnaître quelqu'un.")
       par_poste = {}
       for n, o in ouvrieres.iterrows():
@@ -501,9 +501,9 @@ if onglet_hse is not None:
           g["actions"][action] += 1
       st.dataframe(pd.DataFrame([{
           "Poste": poste_g,
-          "Personnes suivies": g["n"] if g["n"] >= 3 else "moins de 3",
-          "Avec une organisation sûre": f"{g['sures']} sur {g['n']}" if g["n"] >= 3 else "masqué",
-          "Action la plus utile": g["actions"].most_common(1)[0][0] if g["n"] >= 3 else "masqué",
+          "Personnes suivies": g["n"] if g["n"] >= 5 else "moins de 5",
+          "Avec une organisation sûre": f"{g['sures']} sur {g['n']}" if g["n"] >= 5 else "masqué",
+          "Action la plus utile": g["actions"].most_common(1)[0][0] if g["n"] >= 5 else "masqué",
       } for poste_g, g in par_poste.items()]), hide_index=True, width="stretch")
       st.caption("« Équiper » = acheter ou modifier du matériel pour une tâche déjà faite. "
                  "« Former à » = apprendre une nouvelle tâche. Calculé avec les rotations fixes de 30 min "
@@ -589,7 +589,7 @@ if onglet_ing is not None:
       } for l in lignes_cl]), hide_index=True, width="stretch")
       if recommandee and recommandee["chargees"]:
           st.warning("Aucune solution ne soulage sans charger une autre zone : on garde le meilleur compromis et on "
-                     f"protège {', '.join(recommandee['chargees'])} autrement (alternance de tâches, micro-pauses du boîtier).")
+                     f"protège {', '.join(recommandee['chargees'])} autrement (alternance de tâches, micro-pauses proposées).")
 
       noms_sol = [l["nom"] for l in lignes_cl]
       p_apres = i2.selectbox("Solution détaillée ci-dessous", noms_sol, key=f"ing_apres_{tache_ing}",
